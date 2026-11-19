@@ -8,7 +8,7 @@ import StatCard from "./StatCard";
 export default function DashboardPreview() {
     return (
         // Espaces au-dessus et en dessous du cadre : estimés, la capture ne montre pas la jonction avec le hero
-        <section aria-label="Aperçu de l’application" className="py-16">
+        <section id="apercu" aria-label="Aperçu de l’application" className="py-16">
             {/* Cadre : 1024 px (max-w-5xl), bordure d'1 px + 12 px de marge intérieure */}
             <div className="mx-auto max-w-5xl rounded-[38px] border border-frame bg-surface-raised p-3 shadow-frame">
                 {/* Intérieur : 998 × 500 px, coins arrondis découpant la barre latérale et la zone principale */}

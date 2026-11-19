@@ -8,13 +8,18 @@ type NavItem = {
     active?: boolean;
 };
 
+type NavbarProps = {
+    onLoginClick: () => void;
+    onSignupClick: () => void
+};
+
 const navItems: NavItem[] = [
     { label: "Accueil", href: "#", active: true },
     { label: "Fonctionnalités", href: "#fonctionnalites" },
     { label: "À propos", href: "#a-propos" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onLoginClick, onSignupClick }: NavbarProps) {
     return (
         <header className="h-24">
             <div className="relative mx-auto flex h-full max-w-[1176px] items-center justify-between">
@@ -32,7 +37,9 @@ export default function Navbar() {
                             href={item.href}
                             onClick={(event) => {
                                 event.preventDefault();
-                                scrollToSection(item.href === "#" ? null : item.href.slice(1));
+                                scrollToSection(
+                                    item.href === "#" ? null : item.href.slice(1),
+                                );
                                 window.history.pushState(null, "", item.href);
                             }}
                             className={`text-sm font-medium tracking-[-0.015em] ${item.active ? "text-ink" : "text-ink-muted"
@@ -44,10 +51,15 @@ export default function Navbar() {
                 </nav>
 
                 <div className="flex items-center gap-6">
-                    <a href="#" className="text-sm font-semibold text-ink">
+                    <button
+                        type="button"
+                        onClick={onLoginClick}
+                        className="cursor-pointer text-sm font-semibold text-ink"
+                    >
                         Connexion
-                    </a>
-                    <Button>Commencer</Button>
+                    </button>
+
+                    <Button onClick={onSignupClick}>Commencer</Button>
                 </div>
             </div>
         </header>
