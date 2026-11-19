@@ -4,6 +4,7 @@ type ButtonVariant = "primary" | "secondary" | "dark";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     variant?: ButtonVariant;
+    fullWidth?: boolean;
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -16,13 +17,15 @@ const variantClasses: Record<ButtonVariant, string> = {
 
 export default function Button({
     variant = "primary",
+    fullWidth = false,
     children,
     ...props
 }: ButtonProps) {
     return (
         <button
             type="button"
-            className={`inline-flex h-12 cursor-pointer items-center justify-center gap-3 rounded-full px-6 text-sm ${variantClasses[variant]}`}            {...props}
+            className={`inline-flex h-12 cursor-pointer items-center justify-center gap-3 rounded-full px-6 text-sm ${fullWidth ? "w-full" : ""} ${variantClasses[variant]}`}
+            {...props}
         >
             {children}
         </button>

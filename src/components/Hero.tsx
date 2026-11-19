@@ -1,8 +1,16 @@
 import { ChevronRight } from "lucide-react";
 import Badge from "./Badge";
 import Button from "./Button";
+import { scrollToSection } from "../utils/scrollToSection";
 
-export default function Hero() {
+
+
+
+type HeroProps = {
+    onStartClick: () => void;
+};
+
+export default function Hero({ onStartClick }: HeroProps) {
     return (
         <section className="relative isolate flex flex-col items-center pt-28 text-center">
             <div
@@ -25,11 +33,13 @@ export default function Hero() {
             </p>
 
             <div className="mt-9 flex items-center gap-3">
-                <Button>
+                <Button onClick={onStartClick}>
                     Commencer gratuitement
                     <ChevronRight aria-hidden="true" className="size-4" />
                 </Button>
-                <Button variant="secondary">Découvrir l’application</Button>
+                <Button variant="secondary" onClick={() => scrollToSection("apercu")}>
+                    Découvrir l’application
+                </Button>
             </div>
         </section>
     );

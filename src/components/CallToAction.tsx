@@ -1,7 +1,11 @@
 import { ChevronRight } from "lucide-react";
 import Button from "./Button";
 
-export default function CallToAction() {
+type CallToActionProps = {
+    onSignupClick: () => void;
+};
+
+export default function CallToAction({ onSignupClick }: CallToActionProps) {
     return (
         <section aria-label="Créer un compte" className="bg-surface pt-32 pb-24">
             <div className="mx-auto flex h-68 max-w-[1240px] items-end justify-between rounded-[48px] bg-brand p-14">
@@ -15,7 +19,7 @@ export default function CallToAction() {
                     </h2>
                 </div>
 
-                <Button variant="dark">
+                <Button variant="dark" onClick={onSignupClick}>
                     Créer mon compte
                     <ChevronRight
                         aria-hidden="true"
